@@ -5,15 +5,32 @@
     <title>Document</title>
 
     <style>
+     #container {
+	 display: grid;
+	 grid-template-columns: 0.5fr 1fr 0.5fr;
+	 grid-template-areas: '. cv if .';
+     }
      #canvas {
 	 display: block;
-	 margin: 0px auto;
+	 grid-area: cv;
+     }
+     #best {
+	 grid-area: if;
+	 overflow: scroll;
+	 height: 600px;
      }
     </style>
   </head>
   <body>
-    <canvas id="canvas" width="600" height="600"></canvas>
+    <div id="container">
+      <canvas id="canvas" width="600" height="600"></canvas>
+      <div id="best"></div>
+    </div>
+    <input id="speed" type="range" value="1" min="1" max="100" step="1" />
     <p id="lbl"></p>
+    <div id="info"></div>
+
+    <button id="load">load best</button>
 
     <script src="bundle.js"></script>
   </body>
