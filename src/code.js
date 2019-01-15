@@ -1,5 +1,6 @@
 import ctx from './context';
 import Snake from './snake';
+import best_json from './best.json';
 let speed = 1;
 
 
@@ -142,7 +143,12 @@ function loadBestSnake() {
     deadSnakes = [];
     
     let snake = newSnake();
-    let bestGenes = JSON.parse( '[' + localStorage.getItem('best') + ']');
+    let bestGenes;
+    if(!localStorage.getItem('best'))
+        bestGenes = best_json;
+    else 
+        bestGenes = JSON.parse( '[' + localStorage.getItem('best') + ']');
+
     console.log(bestGenes);
     snake.brain.setGenes(bestGenes);
     snakes.push(snake);
