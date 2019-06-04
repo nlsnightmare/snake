@@ -1,6 +1,6 @@
-import ctx from './context';
-import Snake from './snake';
-import Food from './food';
+import Food from './food.js';
+import ctx from './context.js';
+import Snake from './snake.js';
 
 function newFood() {
     let x = Math.floor( Math.random() * 19 );
@@ -9,9 +9,6 @@ function newFood() {
 }
 
 
-
-
-const lbl = document.getElementById("lbl");
 
 let now,last;
 let dt;
@@ -31,20 +28,18 @@ window.onload = () => {
 
 document.onkeydown = (e) => {
     if (s.direction == 4){
-	if (e.key != 'Enter') return;
-	s = new Snake(0,0);
-	s.direction = 1;
+        if (e.key != 'Enter') return;
+        s = new Snake(0,0);
+        s.direction = 1;
     }
     if (( e.key == 'w' || e.key == 'ArrowUp' ) && s.direction != 2) 
-	s.turn(0);
+        s.turn(0);
     else if((e.key == 'd' || e.key == 'ArrowRight') && s.direction != 3)
-	s.turn(1);
+        s.turn(1);
     else if((e.key == 's' || e.key == 'ArrowDown') && s.direction != 0)
-	s.turn(2);
+        s.turn(2);
     else if((e.key == 'a' || e.key == 'ArrowLeft') && s.direction != 1)
-	s.turn(3);
-
-    lbl.textContent = s.direction;
+        s.turn(3);
 };
 
 function Draw() {
@@ -59,8 +54,8 @@ function Draw() {
 
     s.update(dt);
     if (s.x == f.x && s.y == f.y) {
-	s.newTail();
-	f = newFood();
+        s.newTail();
+        f = newFood();
     }
 
     requestAnimationFrame(Draw);
